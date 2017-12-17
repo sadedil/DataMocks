@@ -82,25 +82,25 @@ Task("Package")
         //     AllTags                  = false
         // });
 
-        var releaseNotesExitCode = StartProcess(
-            @"tools\gitreleasenotes\GitReleaseNotes\tools\gitreleasenotes.exe", 
-            new ProcessSettings { Arguments = ". /o artifacts/releasenotes.md" });
-        if (string.IsNullOrEmpty(System.IO.File.ReadAllText("./artifacts/releasenotes.md")))
-            System.IO.File.WriteAllText("./artifacts/releasenotes.md", "No issues closed since last release");
-
-        if (releaseNotesExitCode != 0) throw new Exception("Failed to generate release notes");
-
-        System.IO.File.WriteAllLines(outputDir + "artifacts", new[]{
-            "nuget:DataMocks." + versionInfo.NuGetVersion + ".nupkg",
-            "nugetSymbols:DataMocks." + versionInfo.NuGetVersion + ".symbols.nupkg",
-            "releaseNotes:releasenotes.md"
-        });
-
-        if (isAppVeyor)
-        {
-            foreach (var file in GetFiles(outputDir + "**/*"))
-                AppVeyor.UploadArtifact(file.FullPath);
-        }
+        // var releaseNotesExitCode = StartProcess(
+        //     @"tools\gitreleasenotes\GitReleaseNotes\tools\gitreleasenotes.exe", 
+        //     new ProcessSettings { Arguments = ". /o artifacts/releasenotes.md" });
+        // if (string.IsNullOrEmpty(System.IO.File.ReadAllText("./artifacts/releasenotes.md")))
+        //     System.IO.File.WriteAllText("./artifacts/releasenotes.md", "No issues closed since last release");
+		// 
+        // if (releaseNotesExitCode != 0) throw new Exception("Failed to generate release notes");
+		// 
+        // System.IO.File.WriteAllLines(outputDir + "artifacts", new[]{
+        //     "nuget:DataMocks." + versionInfo.NuGetVersion + ".nupkg",
+        //     "nugetSymbols:DataMocks." + versionInfo.NuGetVersion + ".symbols.nupkg",
+        //     "releaseNotes:releasenotes.md"
+        // });
+		// 
+        // if (isAppVeyor)
+        // {
+        //     foreach (var file in GetFiles(outputDir + "**/*"))
+        //         AppVeyor.UploadArtifact(file.FullPath);
+        // }
     });
 
 Task("Default")
