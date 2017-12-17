@@ -5,13 +5,14 @@
     <AssemblyName>DataMocks</AssemblyName>
     <RootNamespace></RootNamespace>
 
+    <AssemblyVersion>0.2.0.0</AssemblyVersion>
+    <FileVersion>0.2.0.0</FileVersion>
+    <Version>0.2.0.0</Version>
+    <PackageVersion>0.2.0.0</PackageVersion>
+
     <Title>DataMocks - Mocks for System.Data</Title>
-    <Version>0.0.9.1</Version>
-    <PackageVersion>0.0.9</PackageVersion>
     <PackageTags>Mock, Moq, IDataReader, MockDataReader</PackageTags>
     <Authors>Mustafa Sadedil</Authors>
     <Description>This library contains mocks for System.Data classes (Currently IDataReader supported)</Description>
-    <AssemblyVersion>0.0.9.1</AssemblyVersion>
-    <FileVersion>0.0.9.1</FileVersion>
   </PropertyGroup>
 </Project>
