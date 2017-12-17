@@ -95,12 +95,12 @@ Task("Package")
         //     "nugetSymbols:DataMocks." + versionInfo.NuGetVersion + ".symbols.nupkg",
         //     "releaseNotes:releasenotes.md"
         // });
-		// 
-        // if (isAppVeyor)
-        // {
-        //     foreach (var file in GetFiles(outputDir + "**/*"))
-        //         AppVeyor.UploadArtifact(file.FullPath);
-        // }
+
+        if (isAppVeyor)
+        {
+            foreach (var file in GetFiles(outputDir + "**/*"))
+                AppVeyor.UploadArtifact(file.FullPath);
+        }
     });
 
 Task("Default")
