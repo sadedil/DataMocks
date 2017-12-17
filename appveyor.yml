@@ -22,3 +22,8 @@ test:
   assemblies:
     only:
     - DataMocks.Test.dll
+
+deploy:
+- provider: NuGet
+  api_key:
+    secure: p/0skm/Xr1wiP48K5t8K3XkXODo8qyhQnygfMbrYYg05gnCgCMwpVCistaCHOzDB
