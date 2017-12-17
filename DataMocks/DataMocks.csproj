@@ -4,6 +4,12 @@
     <TargetFramework>netcoreapp2.0</TargetFramework>
     <AssemblyName>DataMocks</AssemblyName>
     <RootNamespace></RootNamespace>
-  </PropertyGroup>
 
+    <Title>DataMocks - Mocks for System.Data</Title>
+    <Version>0.0.9</Version>
+    <PackageVersion>0.0.9</PackageVersion>
+    <PackageTags>Mock, Moq, IDataReader, MockDataReader</PackageTags>
+    <Authors>Mustafa Sadedil</Authors>
+    <Description>This library contains mocks for System.Data classes (Currently IDataReader supported only)</Description>
+  </PropertyGroup>
 </Project>
