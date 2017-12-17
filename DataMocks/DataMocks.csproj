@@ -10,6 +10,6 @@
     <PackageVersion>0.0.9</PackageVersion>
     <PackageTags>Mock, Moq, IDataReader, MockDataReader</PackageTags>
     <Authors>Mustafa Sadedil</Authors>
-    <Description>This library contains mocks for System.Data classes (Currently IDataReader supported only)</Description>
+    <Description>This library contains mocks for System.Data classes (Currently IDataReader supported)</Description>
   </PropertyGroup>
 </Project>
