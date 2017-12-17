@@ -9,6 +9,7 @@ namespace DataMocks.Builders
         protected override ObjectBasedMockDataReaderBuilder<T> BuilderInstance => this;
 
         public Type Type { get; private set; }
+
         public PropertyInfo[] PropertyInformations { get; private set; }
 
         public ObjectBasedMockDataReaderBuilder() : base()
@@ -26,12 +27,12 @@ namespace DataMocks.Builders
             var type = typeof(T);
             foreach (var data in dataList)
             {
-                List<object> x = new List<object>();
+                List<object> objectData = new List<object>();
                 foreach (var pi in this.PropertyInformations)
                 {
-                    x.Add(pi.GetValue(data));
+                    objectData.Add(pi.GetValue(data));
                 }
-                this.AddData(x.ToArray());
+                this.AddData(objectData.ToArray());
             }
             return this.BuilderInstance;
         }

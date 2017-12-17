@@ -8,7 +8,6 @@ namespace DataMocks.Builders
        where TBuilder : BaseMockDataReaderBuilder<TBuilder>
     {
         protected abstract TBuilder BuilderInstance { get; }
-
         public Dictionary<string, Type> Columns { get; private set; }
         public List<object[]> DataList { get; private set; }
         public NullValueHandling NullValueHandling { get; private set; } = NullValueHandling.AssumeAsIs;

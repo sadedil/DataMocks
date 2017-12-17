@@ -1,5 +1,4 @@
-﻿using DataMocks;
-using DataMocks.Builders;
+﻿using DataMocks.Builders;
 using System;
 using System.Collections.Generic;
 using System.Data;
@@ -44,11 +43,17 @@ namespace DataMocks
                 });
         }
 
-        //public object this[int i] => this.currentData[i];
+        private void ThrowExceptionIfDisposed()
+        {
+            if (this.isDisposed)
+                throw new ObjectDisposedException(nameof(MockDataReader), "Reader is disposed. This operation is not supported");
+        }
+
         public object this[int i]
         {
             get
             {
+                this.ThrowExceptionIfDisposed();
                 var result = this.currentData[i];
 
                 if (result == null && this.NullValueHandling == NullValueHandling.AssumeAsDbNull)
@@ -166,8 +171,6 @@ namespace DataMocks
         public int GetOrdinal(string name)
         {
             return this.columnNameToOrdinalMapping[name];
-            throw new NotSupportedException();
-            throw new NotSupportedException();
         }
 
         public DataTable GetSchemaTable()
@@ -211,6 +214,8 @@ namespace DataMocks
 
         public bool Read()
         {
+            this.ThrowExceptionIfDisposed();
+
             if (!this.DataList.Any())
                 return false;
 
