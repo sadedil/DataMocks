@@ -3,7 +3,7 @@
 This library contains mocks for System.Data classes (Currently IDataReader supported)
 
 ## Build status
-[![Build status](https://ci.appveyor.com/api/projects/status/5n08tjl5tl2k12lp?svg=true)](https://ci.appveyor.com/project/sadedil/datamocks)
+[![Build status](https://ci.appveyor.com/api/projects/status/lbdbfyux2xt5jx4k?svg=true)](https://ci.appveyor.com/project/sadedil/datamocks-ekfm1)
 
 ## Examples
 For the usage informations you can check the MockDataReaderTest folder
