@@ -8,7 +8,7 @@
     <owners>$authors$</owners>
     <licenseUrl>http://LICENSE_URL_HERE_OR_DELETE_THIS_LINE</licenseUrl>
     <projectUrl>https://github.com/sadedil/DataMocks</projectUrl>
-    <iconUrl>https://raw.githubusercontent.com/sadedil/DataMocks/master/resources/nuget_icon.png</iconUrl>
+    <iconUrl>$package_icon_url$</iconUrl>
     <requireLicenseAcceptance>false</requireLicenseAcceptance>
     <description>$description$</description>
     <releaseNotes>This is the initial release of this package</releaseNotes>

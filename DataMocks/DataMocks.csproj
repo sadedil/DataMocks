@@ -14,5 +14,10 @@
     <PackageTags>Mock, Moq, IDataReader, MockDataReader</PackageTags>
     <Authors>Mustafa Sadedil</Authors>
     <Description>This library contains mocks for System.Data classes (Currently IDataReader supported)</Description>
+    <PackageIconUrl>https://raw.githubusercontent.com/sadedil/DataMocks/master/resources/nuget_icon.png</PackageIconUrl>
+    <RepositoryUrl></RepositoryUrl>
+    <GeneratePackageOnBuild>false</GeneratePackageOnBuild>
+    <SignAssembly>false</SignAssembly>
+    <DelaySign>false</DelaySign>
   </PropertyGroup>
 </Project>
