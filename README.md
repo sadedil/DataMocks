@@ -35,7 +35,7 @@ public void CanReadAllDataProperly()
 
     using (var reader = new MockDataReader(builder))
     {
-        reader.Read();
+        reader.Read().ShouldBe<bool>(true);
         reader.IsDBNull(0).ShouldBe<bool>(false);
         reader.GetString(1).ShouldBe<string>("Product 1");
         reader["IS_ACTIVE"].ShouldBe<object>(true);
@@ -70,7 +70,9 @@ public void CanReadAllDataProperly()
 
     using (var reader = new MockDataReader(builder))
     {
-        reader.Read().ShouldBe<bool>(true);
+        reader.Read(); // Seek the first item
+        reader.Read(); // Seek the second item
+
         reader.GetInt32(0).ShouldBe<int>(20);
         reader.GetString(1).ShouldBe<string>("twenty");
     }
