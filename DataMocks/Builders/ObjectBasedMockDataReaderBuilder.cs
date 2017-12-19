@@ -4,27 +4,27 @@ using System.Reflection;
 
 namespace DataMocks.Builders
 {
-    public class ObjectBasedMockDataReaderBuilder<T> : BaseMockDataReaderBuilder<ObjectBasedMockDataReaderBuilder<T>>
+    public class ObjectBasedMockDataReaderBuilder<TObject> : BaseMockDataReaderBuilder<ObjectBasedMockDataReaderBuilder<TObject>>
     {
-        protected override ObjectBasedMockDataReaderBuilder<T> BuilderInstance => this;
+        protected override ObjectBasedMockDataReaderBuilder<TObject> BuilderInstance => this;
 
-        public Type Type { get; private set; }
+        private Type TypeOfGenericObject { get; set; }
 
-        public PropertyInfo[] PropertyInformations { get; private set; }
+        private PropertyInfo[] PropertyInformations { get; set; }
 
         public ObjectBasedMockDataReaderBuilder() : base()
         {
-            this.Type = typeof(T);
-            this.PropertyInformations = this.Type.GetProperties(BindingFlags.Public | BindingFlags.Instance);
+            this.TypeOfGenericObject = typeof(TObject);
+            this.PropertyInformations = this.TypeOfGenericObject.GetProperties(BindingFlags.Public | BindingFlags.Instance);
             foreach (var pi in this.PropertyInformations)
             {
                 this.AddColumn(pi.Name, pi.GetType());
             }
         }
 
-        public ObjectBasedMockDataReaderBuilder<T> AddData(IEnumerable<T> dataList)
+        public ObjectBasedMockDataReaderBuilder<TObject> AddData(IEnumerable<TObject> dataList)
         {
-            var type = typeof(T);
+            var type = typeof(TObject);
             foreach (var data in dataList)
             {
                 List<object> objectData = new List<object>();

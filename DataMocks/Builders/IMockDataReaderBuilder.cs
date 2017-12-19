@@ -5,8 +5,8 @@ namespace DataMocks.Builders
 {
     public interface IMockDataReaderBuilder
     {
-        Dictionary<string, Type> Columns { get; }
-        List<object[]> DataList { get; }
+        IReadOnlyDictionary<string, Type> GetColumns { get; }
+        IReadOnlyList<object[]> GetDataList { get; }
         NullValueHandling NullValueHandling { get; }
     }
 }

@@ -19,8 +19,8 @@ namespace DataMocks
 
         #region Builder Parameters
 
-        public Dictionary<string, Type> Columns { get; private set; }
-        public List<object[]> DataList { get; private set; }
+        public IReadOnlyDictionary<string, Type> Columns { get; private set; }
+        public IReadOnlyList<object[]> DataList { get; private set; }
         public NullValueHandling NullValueHandling { get; private set; } = NullValueHandling.AssumeAsIs;
 
         #endregion Builder Parameters
@@ -31,8 +31,8 @@ namespace DataMocks
             this.ordinalToColumnNameMapping = new Dictionary<int, string>();
 
             this.NullValueHandling = builder.NullValueHandling;
-            this.Columns = builder.Columns;
-            this.DataList = builder.DataList;
+            this.Columns = builder.GetColumns;
+            this.DataList = builder.GetDataList;
 
             this.Columns.Keys.
                 Select((k, i) => new { ColumnName = k, Ordinal = i }).ToList().

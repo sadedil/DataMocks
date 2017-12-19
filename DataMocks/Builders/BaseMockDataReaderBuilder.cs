@@ -8,18 +8,23 @@ namespace DataMocks.Builders
        where TBuilder : BaseMockDataReaderBuilder<TBuilder>
     {
         protected abstract TBuilder BuilderInstance { get; }
-        public Dictionary<string, Type> Columns { get; private set; }
-        public List<object[]> DataList { get; private set; }
+
+        private Dictionary<string, Type> _columns;
+        public IReadOnlyDictionary<string, Type> GetColumns => this._columns;
+
+        private List<object[]> _dataList;
+        public IReadOnlyList<object[]> GetDataList => this._dataList;
+
         public NullValueHandling NullValueHandling { get; private set; } = NullValueHandling.AssumeAsIs;
 
         public BaseMockDataReaderBuilder()
         {
-            this.Columns = new Dictionary<string, Type>();
-            this.DataList = new List<object[]>();
+            this._columns = new Dictionary<string, Type>();
+            this._dataList = new List<object[]>();
         }
 
-        private bool IsColumnsAdded => this.Columns.Any();
-        private bool IsDataAdded => this.DataList.Any();
+        private bool IsColumnsAdded => this._columns.Any();
+        private bool IsDataAdded => this._dataList.Any();
 
         public TBuilder SetNullValueHandling(NullValueHandling nullValueHandling)
         {
@@ -30,10 +35,10 @@ namespace DataMocks.Builders
         public TBuilder AddColumn(string columnName, Type type)
         {
             if (string.IsNullOrWhiteSpace(columnName)) throw new ArgumentNullException(nameof(columnName));
-            if (this.Columns.ContainsKey(columnName)) throw new ArgumentException("This column is already added", nameof(columnName));
+            if (this._columns.ContainsKey(columnName)) throw new ArgumentException("This column is already added", nameof(columnName));
             if (this.IsDataAdded) throw new InvalidOperationException("You cannot change columns after the data added");
 
-            this.Columns.Add(columnName, type);
+            this._columns.Add(columnName, type);
             return this.BuilderInstance;
         }
 
@@ -41,9 +46,9 @@ namespace DataMocks.Builders
         {
             if (data == null) throw new ArgumentNullException(nameof(data));
             if (!this.IsColumnsAdded) throw new InvalidOperationException("You cannot add data before the adding columns");
-            if (this.Columns.Count != data.Length) throw new InvalidOperationException("Data size must be equal to columns size");
+            if (this._columns.Count != data.Length) throw new InvalidOperationException("Data size must be equal to columns size");
 
-            this.DataList.Add(data);
+            this._dataList.Add(data);
             return this.BuilderInstance;
         }
     }
